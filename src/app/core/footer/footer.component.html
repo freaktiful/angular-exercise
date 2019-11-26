@@ -1,0 +1,14 @@
+
+<div class="container">
+    <footer class="row">
+        <address class="col-12 text-center">
+            {{autor}}
+        </address>
+        <div class="col-12 text-center"> <!-- text-center es una clase de bootstrap-->
+            {{fecha.toLocaleDateString()}}
+            <!-- tambien se pueden usar operaciones en los htmls, pero lo ideal
+            sería hacer la conversión en el controller y mostrarla aquí sin más,
+        o usar un pipe. Pero esto se puede hacer. -->
+        </div>
+    </footer>
+</div>

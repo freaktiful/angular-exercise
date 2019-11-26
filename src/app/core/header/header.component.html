@@ -1,0 +1,31 @@
+
+<!-- la estructura clásica de bootstrap es poner un container que tiene una row
+con las columnas que yo quiera-->
+
+<div class="containter">
+    <header class="row">
+        <!-- hay doce columnas disponibles por fila (no sé por qué, 
+            cosas de bootstrap supongo) -->
+        <h1 class="col-10">
+            {{titulo}}
+        </h1>
+        <div class="col-2">
+            <!--<img src="{{logo}}" alt="">-->
+            <!-- se puede envolver en corchetes una propiedad de html y entonces se vuelve 
+            'de angular' y espera directamente una variable de Angular, y no hay que poner 
+            {{}} sino que vale con la variable-->
+            <img [src]="logo" [alt]="logoAlt">
+        </div>
+        <aub-menu class="col-12"></aub-menu>
+    </header>
+</div>
+
+
+
+<!-- esto no es SOLO html sino que tiene todo html y cosejas nazis de angular.
+
+Se puede hacer interpolación dinámica basada en Angular con 
+{{variableQueExistaEnElController}}
+
+se pueden interpolar variables en el contenido y en las propiedades de los elementos html
+-->

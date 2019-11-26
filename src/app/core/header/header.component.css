@@ -1,0 +1,12 @@
+
+/*la pseudoclase host es como el "this" del css*/
+:host {
+    display: block;
+    background-color: purple;
+    color: bisque;
+}
+
+h1 {
+    margin: 0;
+    padding: 2rem; 
+}

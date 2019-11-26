@@ -1,0 +1,11 @@
+/*la pseudoclase host es como el "this" del css*/
+:host {
+    display: block;
+    background-color: purple;
+    color: bisque;
+}
+
+footer {
+    padding: 1rem;
+    /*text-align: center;  esto mejor lo hacemos con bootstram */
+}

@@ -1,2 +1,16 @@
-<h1>Curso de Angular</h1>
-<router-outlet></router-outlet>
+<aub-header></aub-header>
+
+<div class="container">
+    <div class="row">
+        <main class="col-12">
+                <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>
+<!--<h1>Curso de Angular</h1>-->
+
+<aub-footer></aub-footer>
+
+<!-- aub-header y footer se pueden poner aquí porque ESTÁN EXPORTADOS y appModule importa 
+CoreModule, que es donde están los componentes. El selector es el que se ha definido en el 
+componente -->
