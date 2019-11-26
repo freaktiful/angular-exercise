@@ -4,7 +4,6 @@ import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 
 import { TareaModel } from 'src/app/models/tarea.model';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { Event } from '@angular/router';
 
 @Component({
   selector: 'aub-tarea-simple',

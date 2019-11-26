@@ -1,1 +1,22 @@
-<p>tarea-plus works!</p>
+<h3>Tareas multicomponente</h3>
+<!-- esto se pone para escuchar el evento que viene del hijo-->
+<aub-nueva (addTarea)="onAddTarea($event)"></aub-nueva>
+
+<div class="mt-3">
+        <div  *ngIf="tareas.length; else sinLista">
+            <h3>Lista de tareas</h3>
+            <ul class="list-group">
+                <!-- directivas estructurales: ngFor y ngIf -->
+                <li [ngClass]="{completed: item.isCompleted}" *ngFor="let item of tareas; let i = index"
+                    class="list-group-item">
+                    
+                    <!-- esto es inyectarle valor al hijo desde el padre-->
+                    <aub-tarea [item] = 'item'></aub-tarea>
+                </li>
+            </ul>
+        </div>
+        <!-- las templates de angular son templates html -->
+        <ng-template #sinLista>
+            <p>¡Anímate a añadir alguna tarea!</p>
+        </ng-template>
+    </div>
