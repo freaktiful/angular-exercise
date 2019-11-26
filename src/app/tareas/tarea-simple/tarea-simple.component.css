@@ -1,0 +1,37 @@
+button {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+dialog {
+
+    background: repeating-linear-gradient(
+    45deg,
+     #e688d6,
+    #b960bc 10px,
+    #98468d 10px,
+    #984694 20px
+    );
+    font-weight: bold;
+}
+
+.completed {
+    background: repeating-linear-gradient(
+    45deg,
+     #c3eec3,
+    #9be99b 10px,
+    #78aa72 10px,
+    #639c62 20px
+    );
+}
+
+.completedspan {
+    text-decoration: line-through;
+}
+
+fa-icon, .boton {
+    float: right;
+    margin-right: 4rem;
+    cursor: pointer;
+}
+

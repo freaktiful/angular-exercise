@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { TareaSimpleComponent } from './tarea-simple/tarea-simple.component';
 import { TareaPlusComponent } from './tarea-plus/tarea-plus.component';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     TareasRoutingModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ]
 })
 export class TareasModule { }

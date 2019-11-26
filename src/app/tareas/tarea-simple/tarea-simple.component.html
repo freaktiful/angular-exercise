@@ -4,6 +4,7 @@
   <!-- si usamos etiqueta tiene que coincider el for del label y el id del input -->
   <input type="text" class="form-control" 
   [(ngModel)] = "nuevaTarea.nombre"
+  (keydown.enter)="onAddTarea($event)"
     name="nombre" id="nombre" >
 
 <!-- en el input se podría poner [value]='nombre' (input)= 'nombre = value' 
@@ -15,6 +16,44 @@ que importar en app.module y home.module) -->
 <!-- () es el operador de eventos de angular
     angular solo pasa el evento con $event -->
 <button type="button" class="btn btn-primary" (click)="onAddTarea($event)">Añadir tarea</button>
+<!-- podemos quitar el botón y hacer que se llame a onAddTarea al pulsar el enter (keydown) es para
+cualquier tecla presionada, pero hay algunas teclas en particular que tienen su propio evento, 
+como el enter: keydown.enter -->
+<button  [disabled]="!tareas.length" type="button" class="btn btn-primary" (click)="onDeleteConfirm($event)">Borrar Lista</button>
+
+
+<!-- el ngIf tiene else y se puede poner el id de un template para que lo haga visible-->
 <div class="mt-3">
-    
+    <div  *ngIf="tareas.length; else sinLista">
+        <h3>Lista de tareas</h3>
+        <ul class="list-group">
+            <!-- directivas estructurales: ngFor y ngIf -->
+            <li [ngClass]="{completed: item.isCompleted}" *ngFor="let item of tareas; let i = index"
+                class="list-group-item">
+                <label class="ml-2 form-check-label">
+                    <input type="checkbox" (change)="onChange($event)"
+                    [(ngModel)]=" item.isCompleted"
+                    class="form-check-input">
+                    <span  [ngClass]="{completedspan: item.isCompleted}">{{item.nombre}}</span>
+                </label>
+                <!-- esto se ha ido a la emojipedia, ha buscado "trashcan" y ha copiado el código-->
+                <span class="boton" (click)="onDelete(i)">🗑️</span>
+                <fa-icon [icon]="faTrashAlt" (click)="onDelete(i)"></fa-icon>
+                <!--directiva ngClass para gestionar las clases en angular, porque a 
+                [class] solo se le puede pasar la clase, pero a ngClass se le puede
+            pasar una estructura -->
+            </li>
+        </ul>
+    </div>
+    <!-- las templates de angular son templates html -->
+    <ng-template #sinLista>
+        <p>¡Anímate a añadir alguna tarea!</p>
+    </ng-template>
 </div>
+
+<!-- los dialog son modales -->
+<dialog #confirmar>
+    <p>¿Estás segura de que quieres borrar toda la lista de tareas?</p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="onDeleteTareas(true)">Sí</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="onDeleteTareas(false)">No</button>
+</dialog>
