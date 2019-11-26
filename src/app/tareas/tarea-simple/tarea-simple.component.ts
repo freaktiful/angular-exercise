@@ -4,6 +4,7 @@ import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 
 import { TareaModel } from 'src/app/models/tarea.model';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { Event } from '@angular/router';
 
 @Component({
   selector: 'aub-tarea-simple',
@@ -76,8 +77,24 @@ export class TareaSimpleComponent implements OnInit {
     this.actualizarStore();
   }
 
+  onModify(ev: any, index: number) {
+    /* se puede pasar el evento y hacer que el elemento del DOM anterior pase a contenteditable*/
+    ev.target.previousElementSibling.setAttribute('contenteditable', true)
+    /* hay una recomendación de angular que es que si hay que modificar atributos del DOM
+    que se haga mediante directivas de angular, no a lo bruto. Se podria hacer nuetra
+    propia directiva pero ya veremos si lo vemos. */
+  }
+
+  onEdit(ev: any, i: number){
+    this.tareas[i].nombre = ev.target.textContent
+    this.actualizarStore();
+  }
+
   private actualizarStore() {
     localStorage.setItem(this.storeName, JSON.stringify(this.tareas));
   }
+
+  /* esto que hemos hecho de editar clickando y luego usando elementos del DOM es javascript
+  puro, no angular */
 
 }

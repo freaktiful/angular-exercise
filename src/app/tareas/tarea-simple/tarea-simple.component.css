@@ -30,8 +30,12 @@ dialog {
 }
 
 fa-icon, .boton {
-    float: right;
-    margin-right: 4rem;
+    margin-right: 1rem;
+    margin-left: 1em;
     cursor: pointer;
+}
+
+li {
+    padding-left:2rem;
 }
 
