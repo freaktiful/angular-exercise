@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  images: Array<string> = [3, 14, 15].map((n) => `https://picsum.photos/id/${n}/900/500`)
+
   constructor() { }
 
   ngOnInit() {

@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 /* los modulos de ES son lo que se importa y exporta */
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from './core/core.module';
-import { HomeModule } from './home/home.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 /* las importaciones normales de archivos luego son con ./ */
 
@@ -19,8 +21,11 @@ import { HomeModule } from './home/home.module';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    CoreModule
+    CoreModule,
     //HomeModule si importas esto lo cargas inicialmente. Hay que quitarlo para que la carga sea lazy
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

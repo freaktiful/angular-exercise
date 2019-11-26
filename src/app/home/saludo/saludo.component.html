@@ -1,0 +1,20 @@
+<h3>Saludo</h3>
+<div class="form-group">
+  <label for="nombre">Nombre</label>
+  <!-- si usamos etiqueta tiene que coincider el for del label y el id del input -->
+  <input type="text" class="form-control" [title]="mensaje"
+  [(ngModel)] = "nombre"
+    name="nombre" id="nombre" placeholder="Dime tu nombre">
+
+<!-- en el input se podría poner [value]='nombre' (input)= 'nombre = value' 
+pero angular lo hace con ng-Model para el doble binding (que está en FormsModule, que hay 
+que importar en app.module y home.module) -->
+
+  
+</div>
+<!-- () es el operador de eventos de angular
+    angular solo pasa el evento con $event -->
+<button type="button" class="btn btn-primary" (click)="onClickBorrar($event)">Borrar</button>
+<div class="mt-3">
+    <p>Hola {{nombre}}</p>
+</div>
