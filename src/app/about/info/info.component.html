@@ -3,9 +3,27 @@
             <h4 class="card-title">{{titulo}}</h4>
     </div>
     <div class="card-body">
-       <ng-content select="[id='inicio']"></ng-content>
-       <hr>
-       <ng-content select="[id='extra']"></ng-content>
+       <!-- details y summary es una estructura de html en plan tarjeta expandible -->
+        <!-- <details>
+         <!--   <summary>
+                    <ng-content select="[id='inicio']"></ng-content>
+            </summary>
+            <ng-content select="[id='extra']"></ng-content>
+        </details>
+    -->
+        <!-- lo se summary y details se puede hacer con html sin más (lo de arriba) pero 
+            también está disponible como elemento de bootstrap -->
+
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+            <ngb-panel>
+                <ng-template ngbPanelTitle>
+                    <ng-content select="[id='inicio']"></ng-content>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <ng-content select="[id='extra']"></ng-content>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
     </div>
     <div class="card-footer text-muted">
         <address>{{ autor }}</address>

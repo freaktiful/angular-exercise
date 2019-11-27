@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should have a title with "Curso de Angular" as text', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('angular-aubay2 app is running!');
+    expect(page.getTitleText()).toEqual('Curso de Angular');
   });
 
   afterEach(async () => {

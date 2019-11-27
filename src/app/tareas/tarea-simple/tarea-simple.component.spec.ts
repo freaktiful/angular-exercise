@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TareaSimpleComponent } from './tarea-simple.component';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('TareaSimpleComponent', () => {
   let component: TareaSimpleComponent;
@@ -8,7 +10,8 @@ describe('TareaSimpleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TareaSimpleComponent ]
+      declarations: [ TareaSimpleComponent ],
+      imports: [ FormsModule, FontAwesomeModule ]
     })
     .compileComponents();
   }));
