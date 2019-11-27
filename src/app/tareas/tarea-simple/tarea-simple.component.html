@@ -34,7 +34,7 @@ como el enter: keydown.enter -->
                     <input type="checkbox" (change)="onChange($event)"
                         [(ngModel)]=" item.isCompleted"
                         class="form-check-input">
-                    <label class="form-check-label"
+                    <label [aubHacerEditable]="isEditable" class="form-check-label"
                         [ngClass]="{completedspan: item.isCompleted}"
                         (blur)="onEdit($event, i)"> 
                         <!-- blur es perder el foco-->

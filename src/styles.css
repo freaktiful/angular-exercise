@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+.destacar {
+    font-size: 1rem;
+    padding: 0.3rem;
+    text-align: center;
+}
+
+.color-destacar {
+    background-color: crimson;
+    color: whitesmoke;
+}

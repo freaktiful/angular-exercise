@@ -19,6 +19,8 @@ export class TareaSimpleComponent implements OnInit {
 
   storeName: string;
 
+  isEditable:boolean;
+
   @ViewChild('confirmar', {static: true}) confirmar: ElementRef;
 
 
@@ -39,6 +41,8 @@ export class TareaSimpleComponent implements OnInit {
 
     /* localstorage tiene 4megas y es para almacenar cosas. Es local a la url y al navegador.
     No se puede escribir sobre él desde el servidor (en las cookies sí)*/
+
+    this.isEditable = false;
   }
 
   onAddTarea() {
@@ -78,15 +82,22 @@ export class TareaSimpleComponent implements OnInit {
 
   onModify(ev: any, index: number) {
     /* se puede pasar el evento y hacer que el elemento del DOM anterior pase a contenteditable*/
-    ev.target.previousElementSibling.setAttribute('contenteditable', true)
+    // ANTES DE LA DIRECTIVA EL CÓDIGO ERA ESTE: 
+    //ev.target.previousElementSibling.setAttribute('contenteditable', true)
     /* hay una recomendación de angular que es que si hay que modificar atributos del DOM
     que se haga mediante directivas de angular, no a lo bruto. Se podria hacer nuetra
     propia directiva pero ya veremos si lo vemos. */
+    this.isEditable = true;
   }
+
+  /** vamos a ver si podemos crear una directiva que haga que un elemen to sea editable.
+   * (la directiva es hacerEditable)
+   */
 
   onEdit(ev: any, i: number){
     this.tareas[i].nombre = ev.target.textContent
     this.actualizarStore();
+    this.isEditable = false;
   }
 
   private actualizarStore() {

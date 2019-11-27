@@ -1,10 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'aub-saludo',
   templateUrl: './saludo.component.html',
-  styleUrls: ['./saludo.component.css']
+  styleUrls: ['./saludo.component.css'],
+  encapsulation: ViewEncapsulation.Emulated,
+  changeDetection: ChangeDetectionStrategy.Default
+  //animations:
 })
+
+/* el decorador Component admite muchos más metadatos */
+/* encapsulación se refiere a hasta qué punto está aislado el css de la vista
+con respecto a todo lo demás.
+Emulated - permite la entrada pero no la salida de estilos de fuera (es la por defecto)
+ShadowDom - todo el css tiene que ser interno, cualquier estilo de fuera no se aplica
+None - no encapsula nada, los estilos que defina dentro se aplican tb fuera
+*/
+/*en styleUrls se pueden meter varias hojas de estilos, que es un vector. */
+/** change detection strategy solo tiene default y onPush.
+ * En su estado normal si un objeto tiene un hijo y quiere ver si ha cambiado, lee sus 
+ * propiedades para ver si han cambiado.
+ * si se cambia a OnPush solo mira si las referencias cambian, porque al parecer es
+ * cuando los objetos no van a cambiar. npm install inmutable hace que los objetos
+ * sean siempre inmutables. Entonces se puede cambiar a OnPush.
+ * Pero cambiar los objetos es más lento porque hay que destruirlo y volverlo a crear.
+ * (la propiedad freeze es nativa de js y permite crear objetos inmutables)
+ * 
+ * animations: es animaciones de css definidas a través de Angular. 
+ */
 export class SaludoComponent implements OnInit {
 
   nombre: string;
