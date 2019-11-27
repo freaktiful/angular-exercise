@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TareaModel } from 'src/app/models/tarea.model';
 
 @Component({
@@ -10,6 +10,7 @@ export class TareaPlusComponent implements OnInit {
 
   tareas: Array<TareaModel>;
   storeName: string;
+  @ViewChild('confirmar', {static: true}) confirmar: ElementRef;
   constructor() { }
 
   ngOnInit() {
@@ -22,8 +23,38 @@ export class TareaPlusComponent implements OnInit {
     this.actualizarStore();
   }
 
+  onDeleteTarea(i: number) {
+    this.tareas.splice(i,1)
+    this.actualizarStore();
+  }
+
+  onChangeTarea(i: number) {
+    this.tareas[i].isCompleted = !this.tareas[i].isCompleted;
+    this.actualizarStore();
+  }
+
+  onEditTarea(ev){
+    this.tareas[ev.i].nombre = ev.nombre;
+    this.actualizarStore();
+  }
+
+  onDeleteConfirm() {
+    this.confirmar.nativeElement.showModal();
+  }
+
+  onDeleteTareas(ev){
+    if(ev){
+      this.tareas= [];
+      //this.actualizarStore(); se pueden usar las dos instrucciones.
+      localStorage.removeItem(this.storeName);
+    }
+    this.confirmar.nativeElement.close();
+  }
+
   private actualizarStore() {
     localStorage.setItem(this.storeName, JSON.stringify(this.tareas));
   }
+
+ 
 
 }

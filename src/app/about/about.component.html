@@ -1,1 +1,24 @@
-<p>about works!</p>
+<aub-info [autor]="'Freaktiful Programs S.L.'" [titulo]="'Curso de Angular'">
+    <div id="inicio">
+        <p>Descripción del proyecto:</p>
+    </div>
+    <div id="extra">
+        <p>Soluta suscipit enim cumque esse delectus dicta consequuntur tempore nostrum aliquid! Praesentium nemo nobis ea recusandae eaque animi ratione architecto tempore. Impedit cupiditate doloremque, at magni vitae dicta sequi pariatur.</p>
+        <p>Expedita mollitia quae sapiente inventore minima suscipit dolorum assumenda dolorem, autem ex illum tempora amet libero, esse, id labore? Perspiciatis harum soluta omnis eveniet? Dicta deserunt facere similique quibusdam nulla.</p>
+        <p>Veniam ducimus nesciunt ullam ipsum quidem sequi, accusantium necessitatibus! Facilis at laudantium perspiciatis rem nihil animi distinctio doloremque amet nam molestias et, eveniet unde illum porro accusamus culpa aspernatur fuga.</p>
+        <p>Alias animi voluptas enim voluptates eius fuga vel rerum minima quia labore assumenda accusantium ut tempora rem esse ipsum, et unde nobis facere omnis voluptate officia eos sit? Libero, mollitia!</p>
+        <p>Consequatur, excepturi veniam! Nobis iure amet sint veniam explicabo animi ad sapiente aut, quidem quibusdam id soluta voluptatibus beatae reiciendis optio voluptas quia? Ratione, omnis? Est a quo aperiam voluptatibus.</p>
+    </div>
+</aub-info>
+
+
+
+<!-- si meto un montón de info dentro del componente de angular no quiero que desaparezca, 
+pero por defecto todo lo que se mete dentro del componente se ignora.
+
+transclusión: colocar contenido html nativo DENTRO de un componente de angular para que
+haga algo con él. (ahora se llama content projection)-->
+
+<!-- se le pone un id al elemento html, y en el hijo, se pone #nombreDeFuera al ng-content
+donde queremos que se muestre lo que le pasamos.
+select="[id='inicio']" (eso es un selector de css, el select)-->
