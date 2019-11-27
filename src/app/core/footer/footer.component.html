@@ -5,10 +5,20 @@
             {{autor}}
         </address>
         <div class="col-12 text-center"> <!-- text-center es una clase de bootstrap-->
-            {{fecha.toLocaleDateString()}}
+            <!--{{fecha.toLocaleDateString()}}-->
             <!-- tambien se pueden usar operaciones en los htmls, pero lo ideal
             sería hacer la conversión en el controller y mostrarla aquí sin más,
         o usar un pipe. Pero esto se puede hacer. -->
+
+        <!-- esto tb es una mala praxis que podemos solucionar usando un pipe. -->
+        <!--{ fecha | date : 'fullDate' : null : 'es' | uppercase}} -->
+        {{ fecha | date : 'fullDate' | uppercase}}
+        <!-- los parametros a los pipes se les pasan con : y los valores que admite están 
+            en el pdf (ha mirado date pipe en internet para ver el orden de los parametros, 
+            el segundo es el timezone y el tercero el idioma, si está registrado)
+        -->
+        <!-- al meter en providers de app.module lo de cambiar el locale, lo de cambiar el 
+        idioma aquí ya no hace falta -->
         </div>
     </footer>
 </div>

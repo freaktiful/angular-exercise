@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -11,6 +11,12 @@ import { CoreModule } from './core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 
+// importa el archivo de idioma para la internacionalizacion
+import es from '@angular/common/locales/es'
+// esto es para registrar un paquete de datos de idioma
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(es, 'es')
 
 /* las importaciones normales de archivos luego son con ./ */
 
@@ -27,9 +33,12 @@ import { SharedModule } from './shared/shared.module';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+
   ],
-  providers: [],
+  // para cambiar el idioma de la app: 
+  // en providers se listan los servicios que provee el modulo
+  providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
