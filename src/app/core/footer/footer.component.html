@@ -2,7 +2,7 @@
 <div class="container">
     <footer class="row">
         <address class="col-12 text-center">
-            {{autor}}
+            {{autor | truncarPipe: '10'}} 
         </address>
         <div class="col-12 text-center"> <!-- text-center es una clase de bootstrap-->
             <!--{{fecha.toLocaleDateString()}}-->

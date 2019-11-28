@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NuevaComponent } from './nueva/nueva.component';
 import { TareaComponent } from './tarea/tarea.component';
 import { SharedModule } from '../shared/shared.module';
+import { TareasStoreService } from '../services/tareas-store.service';
 
 
 @NgModule({
@@ -22,6 +23,11 @@ import { SharedModule } from '../shared/shared.module';
     FontAwesomeModule,
     ReactiveFormsModule,
     SharedModule
+  ],
+  // esto si en vez de hacerlo global se define aquí, porque solo se usa en este módulo,
+  // pues solo es visible desde el módulo
+  providers: [
+    TareasStoreService
   ]
 })
 export class TareasModule { }

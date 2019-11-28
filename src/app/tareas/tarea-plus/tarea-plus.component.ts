@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TareaModel } from 'src/app/models/tarea.model';
+import { TareasStoreService } from 'src/app/services/tareas-store.service';
 
 @Component({
   selector: 'aub-tarea-plus',
@@ -9,13 +10,15 @@ import { TareaModel } from 'src/app/models/tarea.model';
 export class TareaPlusComponent implements OnInit {
 
   tareas: Array<TareaModel>;
-  storeName: string;
+//  storeName: string;
   @ViewChild('confirmar', {static: true}) confirmar: ElementRef;
-  constructor() { }
+  constructor(private storeService: TareasStoreService) { }
 
   ngOnInit() {
-    this.storeName = 'tareas' // puede ser el mismo u otro que el de simples.
-    this.tareas = JSON.parse(localStorage.getItem(this.storeName)) || []
+  //  this.storeName = 'tareas' // puede ser el mismo u otro que el de simples.
+  //  this.tareas = JSON.parse(localStorage.getItem(this.storeName)) || []
+  // quitamos lo del localStorage y lo cambiamos por el servicio.
+    this.tareas = this.storeService.getTareas();
   }
 
   onAddTarea(ev: TareaModel){
@@ -46,13 +49,15 @@ export class TareaPlusComponent implements OnInit {
     if(ev){
       this.tareas= [];
       //this.actualizarStore(); se pueden usar las dos instrucciones.
-      localStorage.removeItem(this.storeName);
+      //localStorage.removeItem(this.storeName);
+      this.storeService.removeTareas();
     }
     this.confirmar.nativeElement.close();
   }
 
   private actualizarStore() {
-    localStorage.setItem(this.storeName, JSON.stringify(this.tareas));
+    //localStorage.setItem(this.storeName, JSON.stringify(this.tareas));
+    this.storeService.setTareas(this.tareas);
   }
 
  

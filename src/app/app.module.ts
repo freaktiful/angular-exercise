@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import es from '@angular/common/locales/es'
 // esto es para registrar un paquete de datos de idioma
 import { registerLocaleData } from '@angular/common';
+import { TareasStoreService } from './services/tareas-store.service';
 
 registerLocaleData(es, 'es')
 
@@ -38,7 +39,11 @@ registerLocaleData(es, 'es')
   ],
   // para cambiar el idioma de la app: 
   // en providers se listan los servicios que provee el modulo
-  providers: [{provide: LOCALE_ID, useValue: 'es'}],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es'},
+  //poner en el módulo en providers el servicio es la forma antigua de hacerlo.
+  //  TareasStoreService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
