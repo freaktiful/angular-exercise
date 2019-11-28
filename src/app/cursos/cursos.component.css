@@ -2,3 +2,9 @@ h3 {
     color: brown;
     font-size: 1.2rem;
 }
+
+.error {
+    color: crimson;
+    font-size: 0.9rem;
+    font-weight: bold;
+}

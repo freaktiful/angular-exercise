@@ -1,41 +1,90 @@
 <h3>Formulario Template Driven</h3>
-<form name="form-td" id="form-td">
+<form name="form-td" id="form-td" (submit)="onSubmit()" 
+#formRef="ngForm">
+    <!-- este formulario tiene una directiva ngForm detrás. Y para acceder a ella
+    hacemos lo de #referencia="ngForm" . Sí, al revés que con las directivas. -->
     <fieldset>
         <legend>Datos de usuario</legend>
         <div class="form-group">
-            <label for="nombre">Nombre</label>
+            <label for="nombre-td">Nombre</label>
             <input type="text" class="form-control" 
-            [(ngModel)]="alumno.nombre" name="nombre" id="nombre">
+            #refNombre = "ngModel"
+            [(ngModel)]="alumno.nombre" name="nombre" id="nombre-td" required>
+        </div>
+        <!-- el mensaje este solo lo quiero mostrar cuando haya error en el formulario 
+        esto es definición de mensajes de error por nosotros. Se puede hacer
+        con ngIf, con ngClass que aplique la clase oculta o no dependiendo de si 
+        hay error, o con hidden. ngIf es más "angular", por lo general-->
+        <div class="error" *ngIf="refNombre.touched && refNombre.errors">
+        <!-- se accede al elemento de nuevo con lo de #refNombre="ngModel"-->
+            <p>Es necesario completar el nombre</p>
         </div>
         <div class="form-group">
-            <label for="apellidos">Apellidos</label>
+            <label for="apellidos-td">Apellidos</label>
             <input type="text" class="form-control"
-            [(ngModel)]="alumno.apellidos"  name="apellidos" id="apellidos">
+            #refApellidos = "ngModel"
+            [(ngModel)]="alumno.apellidos"
+            name="apellidos" id="apellidos-td" required>
+        </div>
+        <div class="error" *ngIf="refApellidos.touched && refApellidos.errors">
+            <p>Es necesario completar los apellidos</p>
         </div>
         <div class="form-group">
-            <label for="passwd">Contraseña</label>
+            <label for="passwd-td">Contraseña</label>
             <input type="password" class="form-control"
-            [(ngModel)]="alumno.passwd" name="passwd" id="passwd">
+            [(ngModel)]="alumno.passwd" 
+            #refPasswd="ngModel"
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$"
+            name="passwd" id="passwd-td" required>
+        </div>
+        <!-- "pattern" nos permite pasarle una expresión regular para que la valide
+        el navegador en vez de tener que hacerlo luego en el código -->
+        <div class="error" *ngIf="refPasswd.touched && refPasswd.errors">
+            <p *ngIf="refPasswd.errors?.required">Debe rellenar el campo contraseña</p>
+            <p *ngIf="refPasswd.errors?.pattern">Password must be at least 8 characters, no more than 15 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit.</p>
         </div>
         <div class="form-group">
-            <label for="dni">DNI</label>
+            <label for="dni-td">DNI</label>
             <input type="text" class="form-control"
-            [(ngModel)]="alumno.dni" name="dni" id="dni">
+            #refDNI="ngModel"
+            [(ngModel)]="alumno.dni" name="dni" id="dni-td" required minlength="9">
+        </div>
+        <div class="error" *ngIf="refDNI.touched && refDNI.errors">
+            <!-- errors no es un array, es un objeto, y solo tiene la propiedad
+            del error si existe ese error -->
+            <p *ngIf="refDNI.errors?.required">Es necesario completar el DNI</p>
+            <p *ngIf="refDNI.errors?.minlength">El DNI debe tener 9 dígitos</p>
+            <!-- "operador elvis" lo de poner la interrogación ahí lo que hace es que no sigue
+            si no se cumple la condición, y así no da error. Permite recorrer
+        objetos sin que salte error a la mínima-->
         </div>
         <div class="form-group">
-            <label for="email">Correo</label>
+            <label for="email-td">Correo</label>
             <input type="email" class="form-control"
-            [(ngModel)]="alumno.email" name="email" id="email" required>
+            [(ngModel)]="alumno.email" 
+            #refEmail="ngModel"
+            name="email" id="email-td" required>
+        </div>
+        <div class="error" *ngIf="refEmail.touched && refEmail.errors">
+            <p>Debe rellenar el campo email</p>
         </div>
         <div class="form-group">
-            <label for="nacim">Fecha de nacimiento</label>
+            <label for="nacim-td">Fecha de nacimiento</label>
             <input type="date" class="form-control"
-            [(ngModel)]="alumno.nacim"  name="nacim" id="nacim">
+            [(ngModel)]="alumno.nacim"  
+            #refNacim="ngModel"
+            name="nacim" id="nacim-td" required>
+        </div>
+        <div class="error" *ngIf="refNacim.touched && refNacim.errors">
+            <!-- se accede al elemento de nuevo con lo de #refNombre="ngModel"-->
+            <p>Es necesario completar la fecha de nacimiento</p>
         </div>
         <div class="form-group">
-            <label for="coment">Comentarios</label>
+            <label for="coment-td">Comentarios</label>
             <textarea class="form-control" name="coment"
-            [(ngModel)]="alumno.comments" id="coment" rows="3"></textarea>
+            [(ngModel)]="alumno.comments" 
+            #refComments="ngModel"
+            id="coment-td" rows="3"></textarea>
         </div>
     </fieldset>
     <fieldset>
@@ -43,38 +92,35 @@
         <div class="form-check">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input"
-                [(ngModel)]="alumno.isOk" name="isOk" id="isOk">
+                [(ngModel)]="alumno.isOk" name="isOk" required>
                 Estoy de acuerdo con ....
             </label>
         </div>
         <div>
-            <legend>Turno</legend>
-            <div *ngFor="let turno of turnos" class="form-check">
-                <label class="form-check-label" [title]="turno.descripcion">
-                    <input type="radio" class="form-check-input"
-                    [(ngModel)]="alumno.turno"
-                     name="turno" [value]="turno" required>
-                    {{turno.nombre}}
-                </label>
-                <!-- en el input, value sí admite objetos así que no hay que poner ngValue, pero en option no. -->
-            </div>
-          <!--  <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="turno" id="" value="tarde">
-                    Tarde
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="turno" id="" value="noche">
-                    Noche
-                </label>
-            </div> -->
+        <legend>Turno</legend>
+        <div *ngFor="let turno of turnos; let i = index" class="form-check">
+             <label class="form-check-label" [title]="turno.descripcion">
+                <input type="radio" 
+                #refTurno${i}="ngModel" 
+                class="form-check-input" 
+                [(ngModel)]="alumno.turno" name="turno"
+                    [value]="turno" required>
+                {{turno.nombre}}
+            </label>
+            <!-- en el input, value sí admite objetos así que no hay que poner ngValue, pero en option no. -->
+        </div>
+        <!--como hay ochenta inputs, accedemos desde arriba, usando formRef y yendo
+        navegando la estructura.-->
+        <div class="error" *ngIf="formRef.form.controls.turno?.errors">
+            <p>Debe seleccionar un turno</p>
+        </div>
         </div>
         <div class="form-group">
-            <label for="curso">Selecciona el tema</label>
+            <label for="curso-td">Selecciona el tema</label>
             <select class="form-control"
-            [(ngModel)]="alumno.curso" name="curso" id="curso" required>
+            [(ngModel)]="alumno.curso" name="curso"
+            #refCurso = "ngModel"
+            id="curso-td" required>
                 <option [ngValue]="curso" *ngFor="let curso of cursos"
                 [title]="curso.descripcion">{{curso.nombre}}</option>
 
@@ -87,8 +133,11 @@ pueden pasar objetos.-->
                 <option value="vue">Vue</option>-->
             </select>
         </div>
+        <div class="error" *ngIf="refCurso.errors">
+            <p>Debe seleccionar un curso</p>
+        </div>
     </fieldset>
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-primary" [disabled]="formRef.invalid">
         Enviar</button>
 </form>
 {{ alumno | json}}
