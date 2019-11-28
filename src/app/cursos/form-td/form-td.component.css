@@ -1,0 +1,10 @@
+#form-td {
+    background: repeating-linear-gradient(
+    45deg,
+     #c3eec3,
+    #9be99b 10px,
+    #78aa72 10px,
+    #639c62 20px
+    );
+    font-weight: bold;
+}

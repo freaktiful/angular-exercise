@@ -21,6 +21,10 @@ const routes: Routes = [
   /* esta es la forma antigua de haderlo 
   { path: 'about', loadChildren: './about/about.module#AboutModule' }, */
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
+
+  //nueva ruta para el formulario
+  { path: 'cursos', loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule) },
+  
   // este enrutado es el por defecto cuando no se mete nada, que te redirija a otro componente
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 

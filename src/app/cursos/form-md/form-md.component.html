@@ -1,0 +1,83 @@
+<h3>Formulario Model Driven</h3>
+<form name="form-md" id="form-md">
+        <fieldset>
+            <legend>Datos de usuario</legend>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="nombre">
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" class="form-control" name="apellidos" id="apellidos">
+            </div>
+            <div class="form-group">
+                <label for="passwd">Contraseña</label>
+                <input type="password" class="form-control" name="passwd" id="passwd">
+            </div>
+            <div class="form-group">
+                <label for="dni">DNI</label>
+                <input type="text" class="form-control" name="dni" id="dni">
+            </div>
+            <div class="form-group">
+                <label for="email">Correo</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="nacim">Fecha de nacimiento</label>
+                <input type="date" class="form-control" name="nacim" id="nacim">
+            </div>
+            <div class="form-group">
+                <label for="coment">Comentarios</label>
+                <textarea class="form-control" name="coment" id="coment" rows="3"></textarea>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Datos del curso</legend>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="isOk" id="isOk">
+                    Estoy de acuerdo con ....
+                </label>
+            </div>
+            <div>
+                <legend>Turno</legend>
+                <div *ngFor="let turno of turnos" class="form-check">
+                    <label class="form-check-label" [title]="turno.descripcion">
+                        <input type="radio" class="form-check-input" name="turno" id="turno.id" [value]="turno" required>
+                        {{turno.nombre}}
+                    </label>
+                    <!-- en el input, value sí admite objetos así que no hay que poner ngValue, pero en option no. -->
+                </div>
+              <!--  <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="turno" id="" value="tarde">
+                        Tarde
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="turno" id="" value="noche">
+                        Noche
+                    </label>
+                </div> -->
+            </div>
+            <div class="form-group">
+                <label for="curso">Selecciona el tema</label>
+                <select class="form-control" name="curso" id="curso" required>
+                    <option [ngValue]="curso" *ngFor="let curso of cursos"
+                    [title]="curso.descripcion">{{curso.nombre}}</option>
+    
+    <!-- a value solo se le puede pasar algo de tipo string pero si se usa ngValue se le
+    pueden pasar objetos.-->
+    
+                    <!--<option value=""></option>
+                    <option value="angular">Angular</option>
+                    <option value="react">React</option>
+                    <option value="vue">Vue</option>-->
+                </select>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">
+            Enviar</button>
+    </form>
+           
