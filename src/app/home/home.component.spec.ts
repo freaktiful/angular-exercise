@@ -6,6 +6,7 @@ import { SaludoRefComponent } from './saludo-ref/saludo-ref.component';
 import { SaludoRxComponent } from './saludo-rx/saludo-rx.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -14,7 +15,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent, SaludoComponent, SaludoRefComponent, SaludoRxComponent ],
-      imports: [ NgbModule, FormsModule, ReactiveFormsModule ]
+      imports: [ NgbModule, FormsModule, ReactiveFormsModule, SharedModule ]
     })
     .compileComponents();
   }));
