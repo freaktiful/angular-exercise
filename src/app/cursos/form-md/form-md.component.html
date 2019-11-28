@@ -1,5 +1,5 @@
 <h3>Formulario Model Driven</h3>
-<form name="form-md" id="form-md" [formGroup]="formCurso">
+<form name="form-md" id="form-md" [formGroup]="formCurso" (submit)="onSubmit()">
         <fieldset>
             <legend>Datos de usuario</legend>
             <div class="form-group">
@@ -29,6 +29,7 @@
                 formControlName="passwd" 
                 id="passwd">
             </div>
+            <!-- TODO: TERMINAR LOS MENSAJES DE ERROR-->
             <div class="form-group">
                 <label for="dni-md">DNI</label>
                 <input type="text" class="form-control" 

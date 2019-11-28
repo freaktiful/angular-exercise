@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MaestroDatos } from 'src/app/models/alumno.model';
+import { MaestroDatos, AlumnoModel } from 'src/app/models/alumno.model';
 import { TURNOS, CURSOS } from 'src/app/models/cursos.data';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PasswordValidator } from '../../shared/validators'
@@ -18,6 +18,8 @@ export class FormMdComponent implements OnInit {
   formCurso: FormGroup;
   /* los formgroup se construyen usando FormBuilder, que hay que importarlo como cualquier 
   servicio */
+
+  alumno: AlumnoModel;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -49,7 +51,17 @@ export class FormMdComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Enviando', this.formCurso.value);
+
+    /** de dónde saco el alumno? como la estructura es la misma, se puede hacer */
+    this.alumno = this.formCurso.value
+
+    /** pero si la estructura no fuera la misma, habría que construir el elemento
+     * campo a campo
+     */
+    //this.alumno = new AlumnoModel(this.formCurso.value.nombre, this.formCurso..
+
+
+    console.log('Enviando', this.alumno);
     //console.log(this.formCurso);
     //TODO: enviar datos
   }
