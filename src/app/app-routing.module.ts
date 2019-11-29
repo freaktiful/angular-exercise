@@ -24,6 +24,9 @@ const routes: Routes = [
 
   //nueva ruta para el formulario
   { path: 'cursos', loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule) },
+
+   //nueva ruta para el formulario
+   { path: 'libros', loadChildren: () => import('./libros/libros.module').then(m => m.LibrosModule) },
   
   // este enrutado es el por defecto cuando no se mete nada, que te redirija a otro componente
   { path: '', pathMatch: 'full', redirectTo: 'home' },
