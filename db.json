@@ -18,11 +18,19 @@
   },
   "users": [
     {
-      "id": 1, "name": "Cristina", "curso": "Angular"
+      "id": 1,
+      "name": "Cristina",
+      "curso": "Angular"
     },
     {
-      "id": 2, "name": "Raquel", "curso": "Angular"
-    }    
-
+      "id": 2,
+      "name": "Raquela",
+      "curso": "Angular"
+    },
+    {
+      "id": 4,
+      "name": "Sandra",
+      "curso": "ruby"
+    }
   ]
 }

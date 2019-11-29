@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 import { AlumnoShorModel } from '../models/alumno.model';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AlumnosService {
 
   url: string;
@@ -16,8 +14,8 @@ export class AlumnosService {
     this.url = environment.urlUsuarios
   }
 
-  create(alumno: AlumnoShorModel){
-    this.http.post(this.url, alumno) as Observable<AlumnoShorModel>;
+  create(alumno: AlumnoShorModel): Observable<AlumnoShorModel>{
+    return this.http.post(this.url, alumno) as Observable<AlumnoShorModel>;
   }
 
   read(id: number): Observable<AlumnoShorModel>{

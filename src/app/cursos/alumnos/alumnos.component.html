@@ -1,3 +1,37 @@
-<div class="row">
-    <p>alumnos works!</p>
+<div class="content">
+    <div class="row">
+        <header class="col-12">
+            <h3>Alumnos</h3>    
+        </header>
+        <div class="col-12">
+            <h4>Lista de Alumnos</h4>
+            <ul class="list-group">
+                <li *ngFor="let alumno of alumnos" 
+                class="list-group-item">
+                <!-- routing con parámetros -->
+                <a [routerLink]="'single/'+alumno.id">
+                {{ alumno.id }} -
+                {{ alumno.name }}</a></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <h4>Datos alumno</h4>
+        </div>
+        <div class="col-6">
+            <h4>Nuevo alumno</h4>
+            <div class="form-group">
+                    <input type="text"
+                      class="form-control"  
+                      [formControl]="fcNombre"
+                      placeholder="Nombre">
+                  </div>
+                  <div class="form-group">
+                      <input type="text" 
+                      class="form-control" 
+                      [formControl]="fcCurso"
+                      placeholder="Curso">
+                  </div>
+            <button type="button" (click)="onAdd()" class="btn btn-primary">Añadir</button>
+        </div>
+    </div>
 </div>

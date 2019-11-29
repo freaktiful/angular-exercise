@@ -10,16 +10,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InscripComponent } from './inscrip/inscrip.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { MenuComponent } from './menu/menu.component';
+import { AlumnosService } from '../services/alumnos.service';
+import { SingleComponent } from './single/single.component';
 
 
 @NgModule({
-  declarations: [CursosComponent, FormTdComponent, FormMdComponent, InscripComponent, AlumnosComponent, MenuComponent],
+  declarations: [CursosComponent, FormTdComponent, FormMdComponent, InscripComponent, AlumnosComponent, MenuComponent, SingleComponent],
   imports: [
     CommonModule,
     CursosRoutingModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [ AlumnosService]
 })
 export class CursosModule { }

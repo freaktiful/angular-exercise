@@ -16,8 +16,8 @@ export class AlumnoModel {
 
 export class AlumnoShorModel {
     constructor(
-        public id: number = 0,
-        public nombre: string = '',
+        public id: number,
+        public name: string = '',
         public curso: string = ''
     ){}
 }

@@ -1,0 +1,11 @@
+<h3>Datos del alumno</h3>
+<div class="col-6">
+    <div class="form-group">
+        <input type="text" class="form-control" [formControl]="fcNombre" placeholder="Nombre">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" [formControl]="fcCurso" placeholder="Curso">
+    </div>
+    <button type="button" (click)="onEdit()" class="btn btn-primary">Modificar</button>
+    <button type="button" (click)="onDelete()" class="btn btn-primary">Eliminar</button>
+</div>
