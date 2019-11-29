@@ -7,10 +7,13 @@ import { SharedModule } from '../shared/shared.module';
 import { FormTdComponent } from './form-td/form-td.component';
 import { FormMdComponent } from './form-md/form-md.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InscripComponent } from './inscrip/inscrip.component';
+import { AlumnosComponent } from './alumnos/alumnos.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
-  declarations: [CursosComponent, FormTdComponent, FormMdComponent],
+  declarations: [CursosComponent, FormTdComponent, FormMdComponent, InscripComponent, AlumnosComponent, MenuComponent],
   imports: [
     CommonModule,
     CursosRoutingModule,

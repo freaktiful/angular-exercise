@@ -14,6 +14,13 @@ export class AlumnoModel {
     ){}
 }
 
+export class AlumnoShorModel {
+    constructor(
+        public nombre: string = '',
+        public curso: string = ''
+    ){}
+}
+
 export class MaestroDatos {
     constructor(
         public id: string = '',

@@ -1,0 +1,21 @@
+
+<h3>API de Google</h3>
+<div class="form-group">
+    <input type="text" class="form-control"
+    [formControl]='fcClave'
+    (keydown.enter)="onBuscar()"
+    placeholder="Clave de búsqueda">
+</div>
+<button type="button" (click)="onBuscar()"
+class="btn btn-primary">
+    Buscar
+</button>
+<hr>
+<div *ngIf="libros.length">
+    <h3>Resultados</h3>
+<ul class="list-group">
+    <li class="list-group-item"
+    *ngFor="let item of libros">
+    {{item.autores}} - {{item.titulo}}</li>
+</ul>
+</div>
